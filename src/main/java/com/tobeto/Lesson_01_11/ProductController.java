@@ -22,12 +22,7 @@ public class ProductController {
       Optional<Product> result =  productList.stream()
               .filter(product -> product.getId() == id)
               .findFirst();
-      if(result.isPresent()){
-          return result.get();
-      }
-      else{
-          throw  new Exception(id + " id'li ürün bulunamadı.");
-      }
+      return  result.orElseThrow();
     }
 
     @PostMapping
